@@ -1,0 +1,52 @@
+@import "/src/styles/vars";
+.todo-item{
+  background: $cl_gray;
+  border-radius: 6px;
+  padding: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background $tr_normal;
+  &:hover{
+    background: rgba($cl_yellow,0.7)
+  }
+  &__text{
+    width: 100%;
+    position: relative;
+    margin-right: 10px;
+    &::after{
+      content: '';
+      opacity: 0;
+      position: absolute;
+      display: block;
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%);
+      height: 1px;
+      background: $cl_white;
+      width: 0%;
+      transition: opacity,width $tr_normal;
+    }
+    &_active{
+      &::after{
+        width: 100%;
+        opacity: 1;
+      }
+    }
+  }
+  &__buttons{
+    align-items: center;
+    display: flex;
+  }
+  &__checkbox{
+    margin-right: 8px;
+  }
+  &__icon{
+    width: 12px;
+    height: 12px;
+    fill: lightgray;
+    &_active{
+      fill: $cl_yellow;
+    }
+  }
+}

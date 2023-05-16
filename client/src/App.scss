@@ -1,0 +1,88 @@
+@import "/src/styles/vars";
+.App{
+  &__wrapper{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    max-width: 400px;
+    padding: 15px;
+  }
+  &__title{
+    font-weight: 700;
+    color: $cl_yellow;
+    padding-bottom: 5px;
+    border-bottom: 1px solid lightgray;
+    margin-bottom: 10px;
+  }
+  &__inner{
+    display: flex;
+    margin-bottom: 10px;
+  }
+  &__field{
+    color: $cl_white;
+    border: 1px solid lightgray;
+    width: 100%;
+    margin-right: 10px;
+    background: $cl_gray;
+    padding: 5px;
+    transition: border-color .4s;
+    &:focus{
+      border-color: $cl_yellow;
+    }
+  }
+  &__plus{
+    border-radius: 50%;
+    position: relative;
+    width: 30px;
+    height: 30px;
+    flex-shrink: 0;
+    background: $cl_yellow;
+    transition: $tr_normal;
+    &:hover{
+      background: $cl_yellow-dark;
+    }
+  }
+  &__plus-icon{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    width: 25px;
+    height: 25px;
+    fill: white;
+  }
+  &__list{
+    max-height: 500px;
+    margin-bottom: 20px;
+    overflow-y: auto;
+    &::-webkit-scrollbar{
+      width: 5px;
+    }
+    &::-webkit-scrollbar-thumb {
+      background-color: $cl_yellow;
+      border-radius: 5px;
+    }
+  }
+  &__item{
+    margin-bottom: 5px;
+    &:last-of-type{
+      margin-bottom: 0;
+    }
+  }
+  &__delete-btn{
+    color: $cl_white;
+    width: 100%;
+    text-align: center;
+    padding: 10px 5px;
+    transition: $tr_normal;
+    font-weight: bold;
+    &:hover{
+      background: $cl_red;
+    }
+  }
+  &__add-text{
+    text-align: center;
+  }
+}
