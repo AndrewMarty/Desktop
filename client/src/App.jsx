@@ -16,6 +16,9 @@ function App() {
 				console.log(data)
 				setList(data)
 			})
+			.catch(err => {
+				alert('Произошла ошибка при получении данных с сервера!')
+			})
 	}, [])
 	function handleChange(event) {
 		setName(event.target.value)
@@ -28,23 +31,31 @@ function App() {
 				'Content-Type': 'application/json'
 			},
 			body: JSON.stringify({ name: name.trim(), complete: false })
-		}).then(async response => {
-			if (response.ok) {
-				const item = await response.json()
-				const newItems = [...list]
-				newItems.push(item)
-				setList(newItems)
-			}
 		})
+			.then(async response => {
+				if (response.ok) {
+					const item = await response.json()
+					const newItems = [...list]
+					newItems.push(item)
+					setList(newItems)
+				}
+			})
+			.catch(err => {
+				alert('Error: ' + err.message)
+			})
 		setName('')
 	}
 	function deleteTodo(id) {
-		fetch(`/delete/${id}`).then(response => {
-			if (response.ok) {
-				const newItems = list.filter(item => item._id !== id)
-				setList(newItems)
-			}
-		})
+		fetch(`/delete/${id}`)
+			.then(response => {
+				if (response.ok) {
+					const newItems = list.filter(item => item._id !== id)
+					setList(newItems)
+				}
+			})
+			.catch(err => {
+				alert('Error: ' + err.message)
+			})
 	}
 	return (
 		<div className={'App__wrapper'}>
