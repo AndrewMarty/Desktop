@@ -37,15 +37,13 @@ const TodoItem = ({ data, del, className }) => {
 			>
 				{data.name}
 			</p>
-			<div className={'todo-item__buttons'}>
-				<TrashButton
-					onClick={() => {
-						del(data._id)
-					}}
-				>
-					<BsFillTrashFill />
-				</TrashButton>
-			</div>
+			<TrashButton
+				onClick={() => {
+					del(data._id)
+				}}
+			>
+				<BsFillTrashFill />
+			</TrashButton>
 		</li>
 	)
 }
