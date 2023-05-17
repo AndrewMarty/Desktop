@@ -13,7 +13,6 @@ function App() {
 				return response.json()
 			})
 			.then(data => {
-				console.log(data)
 				setList(data)
 			})
 			.catch(err => {
