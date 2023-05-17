@@ -32,7 +32,7 @@ app.post("/create", async (req, res) => {
 	}
 });
 
-app.get("/delete/:id", async (req, res) => {
+app.delete("/delete/:id", async (req, res) => {
 	try {
 		const item = await TodoTask.findByIdAndDelete(req.params.id);
 		res.status(200).json("Todo was delete");
@@ -41,7 +41,7 @@ app.get("/delete/:id", async (req, res) => {
 	}
 });
 
-app.get("/complete/:id", async (req, res) => {
+app.put("/complete/:id", async (req, res) => {
 	try {
 		const item = await TodoTask.findByIdAndUpdate(req.params.id, {
 			$set: { complete: true },
@@ -52,7 +52,7 @@ app.get("/complete/:id", async (req, res) => {
 	}
 });
 
-app.get("/unset/:id", async (req, res) => {
+app.put("/unset/:id", async (req, res) => {
 	try {
 		const item = await TodoTask.findByIdAndUpdate(req.params.id, {
 			$set: { complete: false },

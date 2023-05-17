@@ -45,7 +45,9 @@ function App() {
 		setName('')
 	}
 	function deleteTodo(id) {
-		fetch(`/delete/${id}`)
+		fetch(`/delete/${id}`, {
+			method: 'DELETE'
+		})
 			.then(response => {
 				if (response.ok) {
 					const newItems = list.filter(item => item._id !== id)

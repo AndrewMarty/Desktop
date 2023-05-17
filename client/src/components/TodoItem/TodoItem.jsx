@@ -9,14 +9,14 @@ const TodoItem = ({ data, del, className }) => {
 	function toggleTodo() {
 		if (complete) {
 			setComplete(false)
-			fetch(`/unset/${data._id}`).then(response => {
+			fetch(`/unset/${data._id}`, { method: 'PUT' }).then(response => {
 				if (!response.ok) {
 					setComplete(true)
 				}
 			})
 		} else {
 			setComplete(true)
-			fetch(`/complete/${data._id}`).then(response => {
+			fetch(`/complete/${data._id}`, { method: 'PUT' }).then(response => {
 				if (!response.ok) {
 					setComplete(false)
 				}
