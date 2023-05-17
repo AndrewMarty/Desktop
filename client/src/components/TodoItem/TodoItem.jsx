@@ -25,6 +25,11 @@ const TodoItem = ({ data, del, className }) => {
 	}
 	return (
 		<li className={clsx('todo-item', className)}>
+			<CheckBox
+				onClick={toggleTodo}
+				state={complete}
+				className={'todo-item__checkbox'}
+			/>
 			<p
 				className={clsx('todo-item__text', {
 					['todo-item__text_active']: complete
@@ -33,11 +38,6 @@ const TodoItem = ({ data, del, className }) => {
 				{data.name}
 			</p>
 			<div className={'todo-item__buttons'}>
-				<CheckBox
-					onClick={toggleTodo}
-					state={complete}
-					className={'todo-item__checkbox'}
-				/>
 				<TrashButton
 					onClick={() => {
 						del(data._id)

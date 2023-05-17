@@ -59,7 +59,7 @@ function App() {
 	}
 	return (
 		<div className={'App__wrapper'}>
-			<h1 className={'App__title'}>TodoList for Michael</h1>
+			<h1 className={'App__title'}>Tasks</h1>
 			<form className={'App__inner'} onSubmit={handleSubmit}>
 				<input
 					type='text'
