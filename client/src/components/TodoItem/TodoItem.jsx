@@ -9,18 +9,26 @@ const TodoItem = ({ data, del, className }) => {
 	function toggleTodo() {
 		if (complete) {
 			setComplete(false)
-			fetch(`/unset/${data._id}`, { method: 'PUT' }).then(response => {
-				if (!response.ok) {
-					setComplete(true)
-				}
-			})
+			fetch(`/unset/${data._id}`, { method: 'PUT' })
+				.then(response => {
+					if (response.ok) {
+						setComplete(true)
+					}
+				})
+				.catch(err => {
+					alert('Error: ' + err.message)
+				})
 		} else {
 			setComplete(true)
-			fetch(`/complete/${data._id}`, { method: 'PUT' }).then(response => {
-				if (!response.ok) {
-					setComplete(false)
-				}
-			})
+			fetch(`/complete/${data._id}`, { method: 'PUT' })
+				.then(response => {
+					if (response.ok) {
+						setComplete(false)
+					}
+				})
+				.catch(err => {
+					alert('Error: ' + err.message)
+				})
 		}
 	}
 	return (
