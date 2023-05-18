@@ -15,7 +15,7 @@ app.get("/get", async (req, res) => {
 		const items = await TodoTask.find({});
 		res.status(200).json(items);
 	} catch (err) {
-		res.json(err);
+		res.status(500).json(err);
 	}
 });
 
