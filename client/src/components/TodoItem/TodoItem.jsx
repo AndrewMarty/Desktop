@@ -11,7 +11,7 @@ const TodoItem = ({ data, del, className }) => {
 			setComplete(false)
 			fetch(`/unset/${data._id}`, { method: 'PUT' })
 				.then(response => {
-					if (response.ok) {
+					if (!response.ok) {
 						setComplete(true)
 					}
 				})
@@ -22,7 +22,7 @@ const TodoItem = ({ data, del, className }) => {
 			setComplete(true)
 			fetch(`/complete/${data._id}`, { method: 'PUT' })
 				.then(response => {
-					if (response.ok) {
+					if (!response.ok) {
 						setComplete(false)
 					}
 				})
