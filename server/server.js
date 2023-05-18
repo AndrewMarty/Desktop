@@ -35,7 +35,7 @@ app.post("/create", async (req, res) => {
 app.delete("/delete/:id", async (req, res) => {
 	try {
 		const item = await TodoTask.findByIdAndDelete(req.params.id);
-		res.status(200).json("Todo was delete");
+		res.status(200).json({ message: "Todo was delete" });
 	} catch (err) {
 		res.json(err);
 	}
@@ -46,7 +46,7 @@ app.put("/complete/:id", async (req, res) => {
 		const item = await TodoTask.findByIdAndUpdate(req.params.id, {
 			$set: { complete: true },
 		});
-		res.status(200).json("Todo was complete");
+		res.status(200).json({ message: "Todo was complete" });
 	} catch (err) {
 		res.status(500).json(err);
 	}
@@ -57,7 +57,7 @@ app.put("/unset/:id", async (req, res) => {
 		const item = await TodoTask.findByIdAndUpdate(req.params.id, {
 			$set: { complete: false },
 		});
-		res.status(200).json("Todo was unset");
+		res.status(200).json({ message: "Todo was unset" });
 	} catch (err) {
 		res.json(err);
 	}
