@@ -37,7 +37,7 @@ app.delete("/delete/:id", async (req, res) => {
 		const item = await TodoTask.findByIdAndDelete(req.params.id);
 		res.status(200).json({ message: "Todo was delete" });
 	} catch (err) {
-		res.json(err);
+		res.status(500).json(err);
 	}
 });
 
@@ -59,7 +59,7 @@ app.put("/unset/:id", async (req, res) => {
 		});
 		res.status(200).json({ message: "Todo was unset" });
 	} catch (err) {
-		res.json(err);
+		res.status(500).json(err);
 	}
 });
 
